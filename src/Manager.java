@@ -8,31 +8,19 @@ public class Manager {
     private HashMap<Integer, Subtask> subTasks = new HashMap<>();
     private int nextId = 1;
 
+
     // получение списка всех задач
     public ArrayList<Task> getTasks() {
-        ArrayList<Task> nameOfTask = new ArrayList<>();
-        for (Integer integer : tasks.keySet()) {
-            nameOfTask.add(tasks.get(integer));
-        }
-        return nameOfTask;
+        return new ArrayList<>(tasks.values());
     }
 
     public ArrayList<Epic> getEpicTasks() {
-        ArrayList<Epic> nameOfEpic = new ArrayList<>();
-        for (Integer integer : epicTasks.keySet()) {
-            nameOfEpic.add(epicTasks.get(integer));
-        }
-        return nameOfEpic;
+        return new ArrayList<>(epicTasks.values());
     }
 
     public ArrayList<Subtask> getSubTasks() {
-        ArrayList<Subtask> nameOfSubTask = new ArrayList<>();
-        for (Integer integer : subTasks.keySet()) {
-            nameOfSubTask.add(subTasks.get(integer));
-        }
-        return nameOfSubTask;
+        return new ArrayList<>(subTasks.values());
     }
-
 
     // удаление всех задач
     public void clearAllTask() {
@@ -40,10 +28,18 @@ public class Manager {
     }
 
     public void clearAllEpic() {
+        for (Epic epic : epicTasks.values()) {
+            for (Integer subTaskId : epic.getSubTaskIds()) {
+                subTasks.remove(subTaskId);
+            }
+        }
         epicTasks.clear();
     }
 
     public void clearAllSubTask() {
+        for (Subtask subtask : subTasks.values()) {
+            epicTasks.get(subtask.getEpicId()).getSubTaskIds().clear();
+        }
         subTasks.clear();
     }
 
@@ -52,6 +48,7 @@ public class Manager {
     public Task getTaskForId(int iD) {
         return tasks.get(iD);
     }
+
     public Epic getEpicForId(int iD) {
         return epicTasks.get(iD);
     }
@@ -96,6 +93,7 @@ public class Manager {
         epicTasks.put(epic.getId(), epic);
         updateStatusEpic(epic);
     }
+
     public void updateSubtask(Subtask subtask) {
         subTasks.put(subtask.getId(), subtask);
         epicTasks.get(subtask.getEpicId()).getSubTaskIds().add(subtask.getId());
@@ -108,9 +106,14 @@ public class Manager {
     }
 
     void removeEpic(Integer Id) {
+        for (Integer subTaskId : epicTasks.get(Id).getSubTaskIds()) {
+            subTasks.remove(subTaskId);
+        }
         epicTasks.remove(Id);
     }
+
     void removeSubtask(Integer Id) {
+        epicTasks.get(subTasks.get(Id).getEpicId()).getSubTaskIds().remove(Id);
         subTasks.remove(Id);
     }
 

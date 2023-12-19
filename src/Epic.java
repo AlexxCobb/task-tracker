@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 
 public class Epic extends Task {
-    private ArrayList<Integer> subTaskIds = new ArrayList<>();
+    private ArrayList<Integer> subTaskIds;
+
 
     public Epic(String nameOfTask, String detailsOfTask) {
         super(nameOfTask, detailsOfTask);
+        subTaskIds = new ArrayList<>();
     }
 
     @Override

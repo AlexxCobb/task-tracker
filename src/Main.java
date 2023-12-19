@@ -38,8 +38,9 @@ public class Main {
         subtask.setStatusOfTask("DONE");
         manager.updateSubtask(subtask);
 
-        manager.removeSubtask(subtask.getId());
+        manager.removeEpic(epicId);
 
-        System.out.println(manager.getEpicForId(epicId).toString());
+
+        System.out.println(manager.getSubTasks().toString());
     }
 }
