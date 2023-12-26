@@ -22,7 +22,7 @@ public class Subtask extends Task {
     }
 
     @Override
-    public String getStatusOfTask() {
+    public Status getStatusOfTask() {
         return super.getStatusOfTask();
     }
 
@@ -32,7 +32,7 @@ public class Subtask extends Task {
     }
 
     @Override
-    public void setStatusOfTask(String statusOfTask) {
+    public void setStatusOfTask(Status statusOfTask) {
         super.setStatusOfTask(statusOfTask);
     }
 
