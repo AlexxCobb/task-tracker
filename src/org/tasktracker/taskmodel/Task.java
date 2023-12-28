@@ -1,3 +1,5 @@
+package org.tasktracker.taskmodel;
+
 public class Task {
     private int id;
     private String nameOfTask;
@@ -32,7 +34,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "org.tasktracker.taskmodel.Task{" +
                 "id=" + id +
                 ", nameOfTask='" + nameOfTask + '\'' +
                 ", detailsOfTask='" + detailsOfTask + '\'' +

@@ -1,3 +1,7 @@
+package org.tasktracker.manager;
+
+import org.tasktracker.taskmodel.Task;
+
 import java.util.List;
 
 public interface HistoryManager {

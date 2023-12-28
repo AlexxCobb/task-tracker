@@ -1,3 +1,7 @@
+package org.tasktracker.taskmodel;
+
+import org.tasktracker.taskmodel.Task;
+
 public class Subtask extends Task {
 
     private int epicId;

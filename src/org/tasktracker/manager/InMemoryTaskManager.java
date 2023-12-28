@@ -1,3 +1,10 @@
+package org.tasktracker.manager;
+
+import org.tasktracker.taskmodel.Epic;
+import org.tasktracker.taskmodel.Status;
+import org.tasktracker.taskmodel.Subtask;
+import org.tasktracker.taskmodel.Task;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
