@@ -1,4 +1,4 @@
-import org.tasktracker.manager.Manager;
+import org.tasktracker.manager.interfaces.Manager;
 import org.tasktracker.manager.Managers;
 import org.tasktracker.taskmodel.Epic;
 import org.tasktracker.taskmodel.Status;
@@ -21,36 +21,52 @@ public class Main {
         inMemoryTaskManager.addTask(task);
         inMemoryTaskManager.addTask(task2);
 
-        int taskId = task.getId();
+        int taskId1 = task.getId();
         int taskId2 = task2.getId();
 
         Epic epic = new Epic("Поменять резину на а/м",
                 "Прочитать отзывы про резину, купить ее и поменять на шиномонтаже");
         inMemoryTaskManager.addEpic(epic);
-        int epicId = epic.getId();
+        int epicId1 = epic.getId();
 
-        Subtask subtask = new Subtask("Отзывы о резине", "Прочитать отзывы про зимнюю резину", epicId);
-        Subtask subtask1 = new Subtask("Купить резину", "Выбрать конкретный магазин и купить резину", epicId);
-        Subtask subtask2 = new Subtask("Шиномонтаж", "Выбрать ближайший шиномонтаж и поменять резину", epicId);
+        Subtask subtask1 = new Subtask("Отзывы о резине", "Прочитать отзывы про зимнюю резину", epicId1);
+        Subtask subtask2 = new Subtask("Купить резину", "Выбрать конкретный магазин и купить резину", epicId1);
+        Subtask subtask3 = new Subtask("Шиномонтаж", "Выбрать ближайший шиномонтаж и поменять резину", epicId1);
 
-        inMemoryTaskManager.addSubtask(subtask);
         inMemoryTaskManager.addSubtask(subtask1);
         inMemoryTaskManager.addSubtask(subtask2);
+        inMemoryTaskManager.addSubtask(subtask3);
+        int subTaskId1 = subtask1.getId();
+        int subTaskId2 = subtask2.getId();
+        int subTaskId3 = subtask3.getId();
+
 
         Epic epic2 = new Epic("Купить подарки", "Купить подарки близким на НГ");
         inMemoryTaskManager.addEpic(epic2);
         int epicId2 = epic2.getId();
 
-        Subtask subtask3 = new Subtask("Подарки", "Купить подарки близким на НГ", epicId2);
-        inMemoryTaskManager.addSubtask(subtask3);
 
-        subtask.setStatusOfTask(Status.DONE);
-        inMemoryTaskManager.updateSubtask(subtask);
+        inMemoryTaskManager.getTaskForId(taskId1);
+        inMemoryTaskManager.getTaskForId(taskId2);
+        inMemoryTaskManager.getTaskForId(taskId1);
+        inMemoryTaskManager.getTaskForId(taskId2);
+        inMemoryTaskManager.getTaskForId(taskId2);
 
-        inMemoryTaskManager.getTaskForId(taskId);
-        inMemoryTaskManager.getTaskForId(taskId2);
-        inMemoryTaskManager.getTaskForId(taskId);
-        inMemoryTaskManager.getTaskForId(taskId2);
+        inMemoryTaskManager.getEpicForId(epicId1);
+        inMemoryTaskManager.getEpicForId(epicId2);
+        inMemoryTaskManager.getEpicForId(epicId2);
+
+        inMemoryTaskManager.getSubTaskForId(subTaskId1);
+        inMemoryTaskManager.getSubTaskForId(subTaskId2);
+        inMemoryTaskManager.getSubTaskForId(subTaskId2);
+        inMemoryTaskManager.getSubTaskForId(subTaskId3);
+        inMemoryTaskManager.getSubTaskForId(subTaskId1);
+        inMemoryTaskManager.getSubTaskForId(subTaskId2);
+
+
+        inMemoryTaskManager.removeTask(taskId1);
+
+        inMemoryTaskManager.removeEpic(epicId1);
 
         System.out.println(inMemoryTaskManager.getHistory().toString());
     }

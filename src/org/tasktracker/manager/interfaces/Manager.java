@@ -1,4 +1,4 @@
-package org.tasktracker.manager;
+package org.tasktracker.manager.interfaces;
 
 import org.tasktracker.taskmodel.Epic;
 import org.tasktracker.taskmodel.Subtask;

@@ -1,5 +1,7 @@
 package org.tasktracker.manager;
 
+import org.tasktracker.manager.interfaces.HistoryManager;
+import org.tasktracker.manager.interfaces.Manager;
 import org.tasktracker.taskmodel.Epic;
 import org.tasktracker.taskmodel.Status;
 import org.tasktracker.taskmodel.Subtask;
@@ -130,20 +132,24 @@ public class InMemoryTaskManager implements Manager {
     @Override
     public void removeTask(Integer Id) {
         tasks.remove(Id);
+        historyManager.remove(Id);
     }
 
     @Override
     public void removeEpic(Integer Id) {
         for (Integer subTaskId : epicTasks.get(Id).getSubTaskIds()) {
             subTasks.remove(subTaskId);
+            historyManager.remove(subTaskId);
         }
         epicTasks.remove(Id);
+        historyManager.remove(Id);
     }
 
     @Override
     public void removeSubtask(Integer Id) {
         epicTasks.get(subTasks.get(Id).getEpicId()).getSubTaskIds().remove(Id);
         subTasks.remove(Id);
+        historyManager.remove(Id);
     }
 
 

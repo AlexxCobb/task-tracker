@@ -1,4 +1,4 @@
-package org.tasktracker.manager;
+package org.tasktracker.manager.interfaces;
 
 import org.tasktracker.taskmodel.Task;
 
@@ -8,5 +8,7 @@ public interface HistoryManager {
 
     void add(Task task);
 
-    public List<Task> getHistory();
+    List<Task> getHistory();
+
+    void remove(int id);
 }
