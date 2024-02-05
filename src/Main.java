@@ -15,7 +15,7 @@ public class Main {
         Manager inMemoryTaskManager = Managers.getDefault();
 
 
-        Task task = new Task("—ходить в магазин", " упить сыр,багет,помидоры, вино");
+        Task task = new Task("—ходить в магазин", " упить сыр, багет, помидоры, вино");
         Task task2 = new Task("—ходить в химчистку", "ќтнести пальто и куртку");
 
         inMemoryTaskManager.addTask(task);
@@ -62,6 +62,7 @@ public class Main {
         inMemoryTaskManager.getSubTaskForId(subTaskId3);
         inMemoryTaskManager.getSubTaskForId(subTaskId1);
         inMemoryTaskManager.getSubTaskForId(subTaskId2);
+
 
 
         inMemoryTaskManager.removeTask(taskId1);

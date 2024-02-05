@@ -5,11 +5,25 @@ public class Task {
     private String nameOfTask;
     private String detailsOfTask;
     private Status statusOfTask;
+    protected TypeOfTasks type;
 
     public Task(String nameOfTask, String detailsOfTask) {
         this.nameOfTask = nameOfTask;
         this.detailsOfTask = detailsOfTask;
         this.statusOfTask = Status.NEW;
+        this.type = TypeOfTasks.TASK;
+    }
+
+    public void setDetailsOfTask(String detailsOfTask) {
+        this.detailsOfTask = detailsOfTask;
+    }
+
+    public void setType(TypeOfTasks type) {
+        this.type = type;
+    }
+
+    public String getDetailsOfTask() {
+        return detailsOfTask;
     }
 
     public String getNameOfTask() {
@@ -32,13 +46,23 @@ public class Task {
         this.statusOfTask = statusOfTask;
     }
 
+    public TypeOfTasks getType() {
+        return type;
+    }
+
+
+    public String toCSV() {
+        return id + "," + type + "," + nameOfTask + "," + statusOfTask + "," + detailsOfTask.replace(',' , ' ');
+    }
+
     @Override
     public String toString() {
-        return "org.tasktracker.taskmodel.Task{" +
+        return "Task{" +
                 "id=" + id +
                 ", nameOfTask='" + nameOfTask + '\'' +
                 ", detailsOfTask='" + detailsOfTask + '\'' +
-                ", statusOfTask='" + statusOfTask + '\'' +
+                ", statusOfTask=" + statusOfTask +
+                ", type=" + type +
                 '}';
     }
 }
