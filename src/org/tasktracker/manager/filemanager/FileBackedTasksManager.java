@@ -1,5 +1,7 @@
-package org.tasktracker.manager;
+package org.tasktracker.manager.filemanager;
 
+import org.tasktracker.manager.memorymanager.InMemoryTaskManager;
+import org.tasktracker.manager.exception.ManagerSaveException;
 import org.tasktracker.manager.interfaces.HistoryManager;
 import org.tasktracker.taskmodel.*;
 

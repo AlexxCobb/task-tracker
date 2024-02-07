@@ -1,5 +1,6 @@
-package org.tasktracker.manager;
+package org.tasktracker.manager.memorymanager;
 
+import org.tasktracker.manager.Managers;
 import org.tasktracker.manager.interfaces.HistoryManager;
 import org.tasktracker.manager.interfaces.Manager;
 import org.tasktracker.taskmodel.Epic;

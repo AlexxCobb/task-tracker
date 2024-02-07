@@ -1,4 +1,4 @@
-package org.tasktracker.manager;
+package org.tasktracker.manager.memorymanager;
 
 import org.tasktracker.manager.interfaces.HistoryManager;
 import org.tasktracker.taskmodel.Task;
