@@ -1,11 +1,11 @@
 package org.tasktracker.manager.interfaces;
 
-import org.tasktracker.taskmodel.Epic;
-import org.tasktracker.taskmodel.Subtask;
-import org.tasktracker.taskmodel.Task;
+import org.tasktracker.model.Epic;
+import org.tasktracker.model.Subtask;
+import org.tasktracker.model.Task;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public interface Manager {
 
@@ -13,25 +13,25 @@ public interface Manager {
     // получение списка всех задач
     List<Task> getTasks();
 
-    List<Epic> getEpicTasks();
+    List<Epic> getEpics();
 
     List<Subtask> getSubTasks();
 
 
     // удаление всех задач
-    void clearAllTask();
+    void clearAllTasks();
 
-    void clearAllEpic();
+    void clearAllEpics();
 
-    void clearAllSubTask();
+    void clearAllSubtasks();
 
 
     // получение по идентификатору
-    Task getTaskForId(int iD);
+    Task getTaskById(int id);
 
-    Epic getEpicForId(int iD);
+    Epic getEpicById(int id);
 
-    Subtask getSubTaskForId(int iD);
+    Subtask getSubtaskById(int id);
 
 
     // создание задачи, передача объекта в качестве параметра
@@ -51,15 +51,16 @@ public interface Manager {
 
 
     // удаление по идентификатору
-    void removeTask(Integer Id);
+    void removeTaskById(Integer id);
 
-    void removeEpic(Integer Id);
+    void removeEpicById(Integer id);
 
-    void removeSubtask(Integer Id);
-
+    void removeSubtaskById(Integer id);
 
     //получение списка подзадач определенного эпика
-    ArrayList<Subtask> getSubTaskOfEpic(Epic epic);
+    List<Subtask> getEpicSubtasks(Epic epic);
 
     public List<Task> getHistory();
+
+   List<Task> getPrioritizedTasks();
 }

@@ -1,6 +1,6 @@
 package org.tasktracker.manager.interfaces;
 
-import org.tasktracker.taskmodel.Task;
+import org.tasktracker.model.Task;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package org.tasktracker.taskmodel;
+package org.tasktracker.model.enums;
 
 public enum Status {
     NEW,

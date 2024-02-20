@@ -1,7 +1,7 @@
-package org.tasktracker.manager.memorymanager;
+package org.tasktracker.manager;
 
 import org.tasktracker.manager.interfaces.HistoryManager;
-import org.tasktracker.taskmodel.Task;
+import org.tasktracker.model.Task;
 
 import java.util.*;
 
@@ -31,7 +31,6 @@ public class InMemoryHistoryManager implements HistoryManager {
             taskIdsToNode.put(task.getId(), tail);
         }
     }
-
 
     @Override
     public List<Task> getHistory() {
@@ -78,6 +77,9 @@ public class InMemoryHistoryManager implements HistoryManager {
                 next.prev = null;
                 first.next = null;
                 head = next;
+            } else {
+                head = null;
+                tail = null;
             }
         } else if (node == last) {
             Node<Task> prev = last.prev;
@@ -96,13 +98,13 @@ public class InMemoryHistoryManager implements HistoryManager {
         size--;
     }
 
-    public class Node <Task> {
+    private static class Node <Task> {
         public Node<Task> prev;
         public Task data;
         public Node<Task> next;
 
 
-        public Node(Node<Task> prev, Task data, Node<Task> next) {
+        private Node(Node<Task> prev, Task data, Node<Task> next) {
             this.prev = prev;
             this.data = data;
             this.next = next;
