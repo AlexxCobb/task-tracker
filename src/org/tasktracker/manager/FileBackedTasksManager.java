@@ -5,6 +5,7 @@ import org.tasktracker.manager.interfaces.HistoryManager;
 import org.tasktracker.model.Epic;
 import org.tasktracker.model.Subtask;
 import org.tasktracker.model.Task;
+import org.tasktracker.model.enums.ParseIndexes;
 import org.tasktracker.model.enums.Status;
 import org.tasktracker.model.enums.TypeOfTasks;
 
@@ -21,16 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.tasktracker.model.enums.ParseIndexes.*;
+
 public class FileBackedTasksManager extends InMemoryTaskManager {
 
     private static final String FILE_HEADER = "id, type, name, status, description, startTime, duration, epic";
-    private static final int ID_INDEX = 0;
-    private static final int TYPE_INDEX = 1;
-    private static final int NAME_OF_TASK_INDEX = 2;
-    private static final int STATUS_INDEX = 3;
-    private static final int DESC_INDEX = 4;
-    private static final int START_TIME_INDEX = 5;
-    private static final int DURATION_INDEX = 6;
+
     private final File saveTasks;
 
     public FileBackedTasksManager(File saveTasks) {
@@ -115,6 +112,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         super.removeSubtaskById(id);
         save();
     }
+
     @Override
     public List<Task> getPrioritizedTasks() {
         return super.getPrioritizedTasks();
@@ -146,11 +144,11 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
     // метод получения ЗАДАЧИ из строки
     private Task getTaskFromString(String value) {
         String[] stringToTask = value.split(",");
-        int ID = Integer.parseInt(stringToTask[ID_INDEX]);
-        TypeOfTasks type = TypeOfTasks.valueOf(stringToTask[TYPE_INDEX]);
-        String nameTask = stringToTask[NAME_OF_TASK_INDEX];
-        Status status = Status.valueOf(stringToTask[STATUS_INDEX]);
-        String description = stringToTask[DESC_INDEX];
+        int ID = Integer.parseInt(stringToTask[ID_INDEX.getIndex()]);
+        TypeOfTasks type = TypeOfTasks.valueOf(stringToTask[TYPE_INDEX.getIndex()]);
+        String nameTask = stringToTask[NAME_OF_TASK_INDEX.getIndex()];
+        Status status = Status.valueOf(stringToTask[STATUS_INDEX.getIndex()]);
+        String description = stringToTask[DESC_INDEX.getIndex()];
         LocalDateTime startTime = getStartTime(stringToTask);
         Duration duration = getDuration(stringToTask);
 
@@ -185,8 +183,8 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
 
     private LocalDateTime getStartTime(String[] stringToTask) {
         LocalDateTime startTime;
-        if (!stringToTask[START_TIME_INDEX].equals("null")) {
-            return startTime = LocalDateTime.parse(stringToTask[START_TIME_INDEX]);
+        if (!stringToTask[START_TIME_INDEX.getIndex()].equals("null")) {
+            return startTime = LocalDateTime.parse(stringToTask[START_TIME_INDEX.getIndex()]);
         } else {
             return startTime = null;
         }
@@ -194,8 +192,8 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
 
     private Duration getDuration(String[] stringToTask) {
         Duration duration;
-        if (!stringToTask[DURATION_INDEX].equals("null")) {
-            return duration = Duration.parse(stringToTask[DURATION_INDEX]);
+        if (!stringToTask[DURATION_INDEX.getIndex()].equals("null")) {
+            return duration = Duration.parse(stringToTask[DURATION_INDEX.getIndex()]);
         } else {
             return duration = null;
         }

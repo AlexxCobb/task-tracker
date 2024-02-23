@@ -62,5 +62,5 @@ public interface Manager {
 
     public List<Task> getHistory();
 
-   List<Task> getPrioritizedTasks();
+    List<Task> getPrioritizedTasks();
 }

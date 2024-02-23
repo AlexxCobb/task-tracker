@@ -42,12 +42,12 @@ public class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksM
 
     @Test
     void whenCreateTaskEpicSubtaskThenAllOfThemSaveToFile() throws IOException {
-        Task task = new Task("name", "details", LocalDateTime.of(2000,2,20,20,2), Duration.ofMinutes(20));
+        Task task = new Task("name", "details", LocalDateTime.of(2000, 2, 20, 20, 2), Duration.ofMinutes(20));
         manager.addTask(task);
         Epic epic = new Epic("name", "details");
         manager.addEpic(epic);
         int epicId = epic.getId();
-        Subtask subtask = new Subtask("name", "details", epicId, LocalDateTime.of(2000,4,20,2,2),Duration.ofMinutes(30));
+        Subtask subtask = new Subtask("name", "details", epicId, LocalDateTime.of(2000, 4, 20, 2, 2), Duration.ofMinutes(30));
         manager.addSubtask(subtask);
         List<String> savedTasks = new ArrayList<>();
 
@@ -70,12 +70,12 @@ public class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksM
 
     @Test
     void whenLoadFromFileTasksWithEmptyHistoryThenAllOfTasksCorrectlyLoadFromFile() throws IOException {
-        Task task = new Task("name", "details", LocalDateTime.of(2000,2,20,20,2), Duration.ofMinutes(20));
+        Task task = new Task("name", "details", LocalDateTime.of(2000, 2, 20, 20, 2), Duration.ofMinutes(20));
         manager.addTask(task);
         Epic epic = new Epic("name", "details");
         manager.addEpic(epic);
         int epicId = epic.getId();
-        Subtask subtask = new Subtask("name", "details", epicId, LocalDateTime.of(2000,3,20,2,2),Duration.ofMinutes(30));
+        Subtask subtask = new Subtask("name", "details", epicId, LocalDateTime.of(2000, 3, 20, 2, 2), Duration.ofMinutes(30));
         manager.addSubtask(subtask);
 
         FileBackedTasksManager managerFromLoad = FileBackedTasksManager.loadFromFile(saveTasks.toFile());
@@ -87,11 +87,11 @@ public class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksM
 
     @Test
     void whenLoadFromFileTasksAndHistoryThenAllOfThemLoadFromFile() throws IOException {
-        Task task = new Task("name", "details", LocalDateTime.of(2000,2,20,20,2), Duration.ofMinutes(20));
+        Task task = new Task("name", "details", LocalDateTime.of(2000, 2, 20, 20, 2), Duration.ofMinutes(20));
         int taskId = manager.addTask(task);
         Epic epic = new Epic("name", "details");
         int epicId = manager.addEpic(epic);
-        Subtask subtask = new Subtask("name", "details", epicId, LocalDateTime.of(2020,2,20,2,2),Duration.ofMinutes(30));
+        Subtask subtask = new Subtask("name", "details", epicId, LocalDateTime.of(2020, 2, 20, 2, 2), Duration.ofMinutes(30));
         int subtaskId = manager.addSubtask(subtask);
 
         manager.getTaskById(taskId);
@@ -116,11 +116,11 @@ public class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksM
 
     @Test
     void whenHistorySaveToFileAndLoadFromFileThenHistorysEquals() throws IOException {
-        Task task = new Task("name", "details", LocalDateTime.of(2000,2,20,20,2), Duration.ofMinutes(20));
+        Task task = new Task("name", "details", LocalDateTime.of(2000, 2, 20, 20, 2), Duration.ofMinutes(20));
         int taskId = manager.addTask(task);
         Epic epic = new Epic("name", "details");
         int epicId = manager.addEpic(epic);
-        Subtask subtask = new Subtask("name", "details", epicId, LocalDateTime.of(2020,2,20,2,2),Duration.ofMinutes(30));
+        Subtask subtask = new Subtask("name", "details", epicId, LocalDateTime.of(2020, 2, 20, 2, 2), Duration.ofMinutes(30));
         int subtaskId = manager.addSubtask(subtask);
 
         manager.getTaskById(taskId);
@@ -130,6 +130,7 @@ public class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksM
 
         assertEquals(manager.getHistory(), managerFromLoad.getHistory());
     }
+
     private void createFileBacked() throws IOException {
         try {
             saveTasks = Files.createFile(Paths.get("saveTest.csv"));

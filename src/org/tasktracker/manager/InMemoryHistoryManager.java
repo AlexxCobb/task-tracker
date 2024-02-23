@@ -10,7 +10,6 @@ public class InMemoryHistoryManager implements HistoryManager {
     private Node<Task> tail;
     private int size = 0;
 
-
     private Map<Integer, Node<Task>> taskIdsToNode;
 
     public InMemoryHistoryManager() {
@@ -98,11 +97,10 @@ public class InMemoryHistoryManager implements HistoryManager {
         size--;
     }
 
-    private static class Node <Task> {
+    private static class Node<Task> {
         public Node<Task> prev;
         public Task data;
         public Node<Task> next;
-
 
         private Node(Node<Task> prev, Task data, Node<Task> next) {
             this.prev = prev;

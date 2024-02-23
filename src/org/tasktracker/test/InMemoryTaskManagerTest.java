@@ -22,9 +22,9 @@ public class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager
 
     @Test
     public void whenCreateThreeTasksIdAssignedInOrder() {
-        Task task1 = new Task("name", "details", LocalDateTime.of(2020,2,20,20,2), Duration.ofMinutes(20));
-        Task task2 = new Task("name", "details", LocalDateTime.of(2020,3,20,20,2), Duration.ofMinutes(20));
-        Task task3 = new Task("name", "details", LocalDateTime.of(2020,4,20,20,2), Duration.ofMinutes(20));
+        Task task1 = new Task("name", "details", LocalDateTime.of(2020, 2, 20, 20, 2), Duration.ofMinutes(20));
+        Task task2 = new Task("name", "details", LocalDateTime.of(2020, 3, 20, 20, 2), Duration.ofMinutes(20));
+        Task task3 = new Task("name", "details", LocalDateTime.of(2020, 4, 20, 20, 2), Duration.ofMinutes(20));
 
         int taskId1 = manager.addTask(task1);
         int taskId2 = manager.addTask(task2);
@@ -40,7 +40,7 @@ public class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager
 
     @Test
     void whenClearAllTasksThenTasksSize0() {
-        Task task = new Task("name", "details", LocalDateTime.of(2020,2,20,20,2), Duration.ofMinutes(20));
+        Task task = new Task("name", "details", LocalDateTime.of(2020, 2, 20, 20, 2), Duration.ofMinutes(20));
         manager.addTask(task);
         manager.clearAllTasks();
         assertTrue(manager.getTasks().isEmpty());
@@ -50,8 +50,8 @@ public class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager
     void whenClearAllEpicsThenEpicsSize0AndSubtasksSize0() {
         Epic epic = new Epic("Epic NAME", "Epic description");
         int epicId = manager.addEpic(epic);
-        Subtask subtask1 = new Subtask("name", "details", epicId, LocalDateTime.of(2000,2,21,2,2), Duration.ofMinutes(30));
-        Subtask subtask2 = new Subtask("name", "details", epicId, LocalDateTime.of(2000,2,23,2,2),Duration.ofMinutes(30));
+        Subtask subtask1 = new Subtask("name", "details", epicId, LocalDateTime.of(2000, 2, 21, 2, 2), Duration.ofMinutes(30));
+        Subtask subtask2 = new Subtask("name", "details", epicId, LocalDateTime.of(2000, 2, 23, 2, 2), Duration.ofMinutes(30));
         manager.addSubtask(subtask1);
         manager.addSubtask(subtask2);
 
@@ -65,8 +65,8 @@ public class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager
         Epic epic = new Epic("Epic NAME", "Epic description");
         int epicId = manager.addEpic(epic);
 
-        Subtask subtask1 = new Subtask("name", "details", epicId, LocalDateTime.of(2020,2,20,2,2),Duration.ofMinutes(30));
-        Subtask subtask2 = new Subtask("name", "details", epicId, LocalDateTime.of(2021,2,20,2,2),Duration.ofMinutes(30));
+        Subtask subtask1 = new Subtask("name", "details", epicId, LocalDateTime.of(2020, 2, 20, 2, 2), Duration.ofMinutes(30));
+        Subtask subtask2 = new Subtask("name", "details", epicId, LocalDateTime.of(2021, 2, 20, 2, 2), Duration.ofMinutes(30));
         manager.addSubtask(subtask1);
         manager.addSubtask(subtask2);
 

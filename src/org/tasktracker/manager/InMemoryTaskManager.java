@@ -24,7 +24,6 @@ public class InMemoryTaskManager implements Manager {
     protected static Set<Task> sortedTasks = new TreeSet<>(Comparator.comparing(Task::getStartTime,
             Comparator.nullsLast(Comparator.naturalOrder())).thenComparing(Task::getId));
 
-
     // создание задачи, передача объекта в качестве параметра
     @Override
     public int addTask(Task task) {
@@ -125,7 +124,6 @@ public class InMemoryTaskManager implements Manager {
         return new ArrayList<>(subtaskIdToSubtaskMap.values());
     }
 
-
     //получение списка подзадач определенного эпика
     @Override
     public List<Subtask> getEpicSubtasks(Epic epic) {
@@ -175,20 +173,15 @@ public class InMemoryTaskManager implements Manager {
     // удаление всех задач
     @Override
     public void clearAllTasks() {
-        for (Task value : taskIdToTaskMap.values()) {
-            
+        for (Task task : taskIdToTaskMap.values()) {
+            sortedTasks.remove(task);
         }
         taskIdToTaskMap.clear();
-        
     }
 
     @Override
     public void clearAllEpics() {
-        for (Epic epic : epicIdToEpicMap.values()) {
-            for (Integer subTaskId : epic.getSubtaskIds()) {
-                subtaskIdToSubtaskMap.remove(subTaskId);
-            }
-        }
+        clearAllSubtasks();
         epicIdToEpicMap.clear();
     }
 
@@ -199,6 +192,7 @@ public class InMemoryTaskManager implements Manager {
             epic.getSubtaskIds().clear();
             updateEpicStatus(epic);
             setStartTimeAndEndTimeAndDurationToEpic(epic);
+            sortedTasks.remove(subtask);
         }
         subtaskIdToSubtaskMap.clear();
     }
@@ -297,8 +291,6 @@ public class InMemoryTaskManager implements Manager {
                 .orElseThrow().getEndTime();
         epic.setEndTime(end);
     }
-
-
 }
 
 

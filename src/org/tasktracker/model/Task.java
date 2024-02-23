@@ -126,7 +126,7 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        if(startTime == null || duration == null) {
+        if (startTime == null || duration == null) {
             return id == task.id && name.equals(task.name) && description.equals(task.description) && status == task.status && type == task.type;
         }
         return id == task.id && name.equals(task.name) && description.equals(task.description) && status == task.status && type == task.type && duration.equals(task.duration) && startTime.equals(task.startTime);
