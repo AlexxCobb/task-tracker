@@ -33,13 +33,11 @@ public class InMemoryHistoryManagerTest {
         assertEquals(1, history.size());
         assertEquals(task, history.get(0));
     }
-
     @Test
     void whenNoAddedTaskThenHistorySize0() {
         var history = manager.getHistory();
         assertTrue(history.isEmpty());
     }
-
     @Test
     void whenCreateTaskAndAddSameTaskSeveralTimesThenHistorySize1WithoutDuplicationAndGetCorrectlyTask() {
         Task task = new Task("name", "details", LocalDateTime.of(2000, 2, 20, 20, 2), Duration.ofMinutes(20));
