@@ -288,25 +288,25 @@ abstract class TaskManagerTest<T extends Manager> {
     }
 
     @Test
-    void whenCreateTaskAndGetByIdWithWrongIdThenThrowException() {
+    void whenCreateTaskAndGetByIdWithWrongIdThenReturnNull() {
         Task task = new Task("name", "details", LocalDateTime.of(2020, 2, 20, 20, 2), Duration.ofMinutes(20));
         task.setId(3);
 
-        assertThrows(NullPointerException.class, () -> manager.getTaskById(task.getId()));
+        assertNull(manager.getTaskById(task.getId()));
     }
 
     @Test
-    void whenCreateEpicAndGetByIdWithWrongIdThenThrowException() {
+    void whenCreateEpicAndGetByIdWithWrongIdThenReturnNull() {
         Epic epic = new Epic("name", "details");
         epic.setId(1);
 
-        assertThrows(NullPointerException.class, () -> manager.getTaskById(epic.getId()));
+        assertNull(manager.getTaskById(epic.getId()));
     }
 
     @Test
-    void whenCreateSubtaskAndGetByIdWithWrongIdThenThrowException() {
+    void whenCreateSubtaskAndGetByIdWithWrongIdThenReturnNull() {
         Subtask subtask = new Subtask("name", "details", 6, LocalDateTime.of(2020, 2, 20, 20, 2), Duration.ofMinutes(20));
 
-        assertThrows(NullPointerException.class, () -> manager.getTaskById(subtask.getId()));
+        assertNull(manager.getTaskById(subtask.getId()));
     }
 }

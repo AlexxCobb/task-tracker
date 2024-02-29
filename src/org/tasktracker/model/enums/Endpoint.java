@@ -1,0 +1,23 @@
+package org.tasktracker.model.enums;
+
+public enum Endpoint {
+    GET_TASKS,
+    GET_EPICS,
+    GET_SUBTASKS,
+    DELETE_ALL_TASKS,
+    DELETE_ALL_EPICS,
+    DELETE_ALL_SUBTASKS,
+    GET_TASK_BY_ID,
+    GET_EPIC_BY_ID,
+    GET_SUBTASK_BY_ID,
+    POST_TASK,
+    POST_EPIC,
+    POST_SUBTASK,
+    DELETE_TASK_BY_ID,
+    DELETE_EPIC_BY_ID,
+    DELETE_SUBTASK_BY_ID,
+    GET_EPIC_SUBTASKS,
+    GET_HISTORY,
+    GET_PRIORITIZED_TASKS,
+    UNKNOWN
+}

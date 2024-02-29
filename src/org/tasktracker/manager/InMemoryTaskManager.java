@@ -15,7 +15,6 @@ import java.util.*;
 
 public class InMemoryTaskManager implements Manager {
 
-
     private int nextId = 1;
     protected HistoryManager historyManager = Managers.getDefaultHistory();
     protected HashMap<Integer, Task> taskIdToTaskMap = new HashMap<>();
@@ -89,23 +88,35 @@ public class InMemoryTaskManager implements Manager {
     // получение по идентификатору
     @Override
     public Task getTaskById(int id) {
-        var task = taskIdToTaskMap.get(id);
-        historyManager.add(task);
-        return task;
+        if(taskIdToTaskMap.containsKey(id)) {
+            var task = taskIdToTaskMap.get(id);
+            historyManager.add(task);
+            return task;
+        } else {
+            return null;
+        }
     }
 
     @Override
     public Epic getEpicById(int id) {
-        var epic = epicIdToEpicMap.get(id);
-        historyManager.add(epic);
-        return epic;
+        if(epicIdToEpicMap.containsKey(id)){
+            var epic = epicIdToEpicMap.get(id);
+            historyManager.add(epic);
+            return epic;
+        } else {
+            return null;
+        }
     }
 
     @Override
     public Subtask getSubtaskById(int id) {
-        var subtask = subtaskIdToSubtaskMap.get(id);
-        historyManager.add(subtask);
-        return subtask;
+        if(subtaskIdToSubtaskMap.containsKey(id)) {
+            var subtask = subtaskIdToSubtaskMap.get(id);
+            historyManager.add(subtask);
+            return subtask;
+        } else {
+            return null;
+        }
     }
 
     // получение списка всех задач
@@ -181,7 +192,7 @@ public class InMemoryTaskManager implements Manager {
 
     @Override
     public void clearAllEpics() {
-        clearAllSubtasks();
+        subtaskIdToSubtaskMap.clear();
         epicIdToEpicMap.clear();
     }
 
@@ -260,7 +271,7 @@ public class InMemoryTaskManager implements Manager {
 
     // расчет времени и продолжительности epic
     private void setStartTimeAndEndTimeAndDurationToEpic(Epic epic) {
-        if (epic.getSubtaskIds().size() != 0) {
+        if (epic.getSubtaskIds().size() != 0 && epic.getSubtaskIds() != null) {
             setStartTimeToEpic(epic);
             setDurationToEpic(epic);
             setEndTimeToEpic(epic);

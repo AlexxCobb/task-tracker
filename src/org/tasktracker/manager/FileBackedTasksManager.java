@@ -17,10 +17,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 import static org.tasktracker.model.enums.ParseIndexes.*;
 
@@ -28,10 +27,13 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
 
     private static final String FILE_HEADER = "id, type, name, status, description, startTime, duration, epic";
 
-    private final File saveTasks;
+    private File saveTasks;
 
     public FileBackedTasksManager(File saveTasks) {
         this.saveTasks = saveTasks;
+    }
+
+    public FileBackedTasksManager() {
     }
 
     @Override
@@ -94,7 +96,6 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         return subtask;
     }
 
-
     @Override
     public void removeTaskById(Integer id) {
         super.removeTaskById(id);
@@ -119,7 +120,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
     }
 
     // метод сохранения состояния менеджера в файл
-    private void save() {
+    protected void save() {
         try (BufferedWriter bufferedWriter = new BufferedWriter
                 (new FileWriter(saveTasks, StandardCharsets.UTF_8))) {
 
@@ -286,9 +287,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         return fileBackedTasksManager;
     }
 
-
     // проверка работоспособности
-
     public static void main(String[] args) throws IOException {
         Path saveTasks;
         try {
