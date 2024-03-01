@@ -16,8 +16,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
@@ -382,6 +380,3 @@ public class HttpTaskServer {
         System.out.println("HTTP-сервер остановлен на " + PORT + " порту!");
     }
 }
-
-
-

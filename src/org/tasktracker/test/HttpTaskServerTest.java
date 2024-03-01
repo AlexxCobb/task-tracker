@@ -58,13 +58,13 @@ public class HttpTaskServerTest {
     void whenRequestAllTasksThenGetAllTasks() throws IOException, InterruptedException {
         URI url = URI.create(TASK_URI);
 
-        Task task = new Task("Сходить в магазин", "Купить сыр, багет, помидоры, вино", LocalDateTime.of(2025, 2, 2, 12, 0), Duration.ofMinutes(30));
+        Task task = new Task("РЎС…РѕРґРёС‚СЊ РІ РјР°РіР°Р·РёРЅ", "РљСѓРїРёС‚СЊ СЃС‹СЂ, Р±Р°РіРµС‚, РїРѕРјРёРґРѕСЂС‹, РІРёРЅРѕ", LocalDateTime.of(2025, 2, 2, 12, 0), Duration.ofMinutes(30));
         task.setId(1);
         String jsonOfTask1 = gson.toJson(task);
         final HttpRequest.BodyPublisher body1 = HttpRequest.BodyPublishers.ofString(jsonOfTask1);
         HttpRequest request1 = HttpRequest.newBuilder().uri(url).POST(body1).build();
 
-        Task task1 = new Task("Сходить в магазин", "Купить сыр, багет, помидоры, вино", LocalDateTime.of(2025, 2, 2, 12, 0), Duration.ofMinutes(30));
+        Task task1 = new Task("РЎС…РѕРґРёС‚СЊ РІ РјР°РіР°Р·РёРЅ", "РљСѓРїРёС‚СЊ СЃС‹СЂ, Р±Р°РіРµС‚, РїРѕРјРёРґРѕСЂС‹, РІРёРЅРѕ", LocalDateTime.of(2025, 2, 2, 12, 0), Duration.ofMinutes(30));
         task1.setId(2);
         String jsonOfTask2 = gson.toJson(task1);
         final HttpRequest.BodyPublisher body2 = HttpRequest.BodyPublishers.ofString(jsonOfTask2);
@@ -146,7 +146,7 @@ public class HttpTaskServerTest {
     void whenRequestGetTaskByIdThenGetCorrectTask() {
         URI url = URI.create(TASK_URI + "?id=1");
 
-        Task task = new Task("Сходить в магазин", "Купить сыр, багет, помидоры, вино", LocalDateTime.of(2025, 2, 2, 12, 0), Duration.ofMinutes(30));
+        Task task = new Task("РЎС…РѕРґРёС‚СЊ РІ РјР°РіР°Р·РёРЅ", "РљСѓРїРёС‚СЊ СЃС‹СЂ, Р±Р°РіРµС‚, РїРѕРјРёРґРѕСЂС‹, РІРёРЅРѕ", LocalDateTime.of(2025, 2, 2, 12, 0), Duration.ofMinutes(30));
         task.setId(1);
         String jsonOfTask1 = gson.toJson(task);
         final HttpRequest.BodyPublisher body1 = HttpRequest.BodyPublishers.ofString(jsonOfTask1);
@@ -323,13 +323,13 @@ public class HttpTaskServerTest {
     void whenUpdateTaskThenCorrectPostTask() {
         URI url = URI.create(TASK_URI);
 
-        Task task = new Task("Сходить в магазин", "вино", LocalDateTime.of(2024, 2, 2, 12, 0), Duration.ofMinutes(30));
+        Task task = new Task("РЎС…РѕРґРёС‚СЊ РІ РјР°РіР°Р·РёРЅ", "РІРёРЅРѕ", LocalDateTime.of(2024, 2, 2, 12, 0), Duration.ofMinutes(30));
         task.setId(1);
         String jsonOfTask1 = gson.toJson(task);
         final HttpRequest.BodyPublisher body1 = HttpRequest.BodyPublishers.ofString(jsonOfTask1);
         HttpRequest request1 = HttpRequest.newBuilder().uri(url).POST(body1).build();
 
-        Task task1 = new Task("Сходить в магазин", "Купить сыр, багет, помидоры, вино", LocalDateTime.of(2025, 2, 2, 12, 0), Duration.ofMinutes(30));
+        Task task1 = new Task("РЎС…РѕРґРёС‚СЊ РІ РјР°РіР°Р·РёРЅ", "РљСѓРїРёС‚СЊ СЃС‹СЂ, Р±Р°РіРµС‚, РїРѕРјРёРґРѕСЂС‹, РІРёРЅРѕ", LocalDateTime.of(2025, 2, 2, 12, 0), Duration.ofMinutes(30));
         task.setId(1);
         String jsonOfTask2 = gson.toJson(task1);
         final HttpRequest.BodyPublisher body2 = HttpRequest.BodyPublishers.ofString(jsonOfTask2);
@@ -414,13 +414,13 @@ public class HttpTaskServerTest {
         URI url1 = URI.create(TASK_URI + "?id=1");
         URI url2 = URI.create(TASK_URI);
 
-        Task task = new Task("Сходить в магазин", "вино", LocalDateTime.of(2024, 2, 2, 12, 0), Duration.ofMinutes(30));
+        Task task = new Task("РЎС…РѕРґРёС‚СЊ РІ РјР°РіР°Р·РёРЅ", "РІРёРЅРѕ", LocalDateTime.of(2024, 2, 2, 12, 0), Duration.ofMinutes(30));
         task.setId(1);
         String jsonOfTask1 = gson.toJson(task);
         final HttpRequest.BodyPublisher body1 = HttpRequest.BodyPublishers.ofString(jsonOfTask1);
         HttpRequest request1 = HttpRequest.newBuilder().uri(url1).POST(body1).build();
 
-        Task task1 = new Task("Сходить в магазин", "Купить сыр, багет, помидоры, вино", LocalDateTime.of(2025, 2, 2, 12, 0), Duration.ofMinutes(30));
+        Task task1 = new Task("РЎС…РѕРґРёС‚СЊ РІ РјР°РіР°Р·РёРЅ", "РљСѓРїРёС‚СЊ СЃС‹СЂ, Р±Р°РіРµС‚, РїРѕРјРёРґРѕСЂС‹, РІРёРЅРѕ", LocalDateTime.of(2025, 2, 2, 12, 0), Duration.ofMinutes(30));
         task1.setId(2);
         String jsonOfTask2 = gson.toJson(task1);
         final HttpRequest.BodyPublisher body2 = HttpRequest.BodyPublishers.ofString(jsonOfTask2);
@@ -496,13 +496,13 @@ public class HttpTaskServerTest {
     void whenDeleteAllTasksThenCorrectDelete() {
         URI url = URI.create(TASK_URI);
 
-        Task task = new Task("Сходить в магазин", "вино", LocalDateTime.of(2024, 2, 2, 12, 0), Duration.ofMinutes(30));
+        Task task = new Task("РЎС…РѕРґРёС‚СЊ РІ РјР°РіР°Р·РёРЅ", "РІРёРЅРѕ", LocalDateTime.of(2024, 2, 2, 12, 0), Duration.ofMinutes(30));
         task.setId(1);
         String jsonOfTask1 = gson.toJson(task);
         final HttpRequest.BodyPublisher body1 = HttpRequest.BodyPublishers.ofString(jsonOfTask1);
         HttpRequest request1 = HttpRequest.newBuilder().uri(url).POST(body1).build();
 
-        Task task1 = new Task("Сходить в магазин", "Купить сыр, багет, помидоры, вино", LocalDateTime.of(2025, 2, 2, 12, 0), Duration.ofMinutes(30));
+        Task task1 = new Task("РЎС…РѕРґРёС‚СЊ РІ РјР°РіР°Р·РёРЅ", "РљСѓРїРёС‚СЊ СЃС‹СЂ, Р±Р°РіРµС‚, РїРѕРјРёРґРѕСЂС‹, РІРёРЅРѕ", LocalDateTime.of(2025, 2, 2, 12, 0), Duration.ofMinutes(30));
         task1.setId(2);
         String jsonOfTask2 = gson.toJson(task1);
         final HttpRequest.BodyPublisher body2 = HttpRequest.BodyPublishers.ofString(jsonOfTask2);

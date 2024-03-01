@@ -186,35 +186,30 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         LocalDateTime startTime;
         if (!stringToTask[START_TIME_INDEX.getIndex()].equals("null")) {
             return startTime = LocalDateTime.parse(stringToTask[START_TIME_INDEX.getIndex()]);
-        } else {
-            return startTime = null;
         }
+        return startTime = null;
     }
 
     private Duration getDuration(String[] stringToTask) {
         Duration duration;
         if (!stringToTask[DURATION_INDEX.getIndex()].equals("null")) {
             return duration = Duration.parse(stringToTask[DURATION_INDEX.getIndex()]);
-        } else {
-            return duration = null;
         }
+        return duration = null;
     }
 
     private LocalDateTime getEndTimeToEpic(String[] stringToTask) {
         LocalDateTime endTime;
         if (!stringToTask[7].equals("null")) {
             return endTime = LocalDateTime.parse(stringToTask[7]);
-        } else {
-            return endTime = null;
         }
+        return endTime = null;
     }
 
     // метод формирующий историю просмотров ЗАДАЧ в строку
     private static String historyToString(HistoryManager manager) {
         List<Task> history = manager.getHistory();
-        if (history.isEmpty()) {
-            return "";
-        } else {
+        if (!history.isEmpty()) {
             StringBuilder sb = new StringBuilder();
             for (Task task : history) {
                 sb.append(task.getId());
@@ -223,6 +218,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
             sb.deleteCharAt(sb.length() - 1);
             return sb.toString();
         }
+        return "";
     }
 
     // метод восстановления истории из строки

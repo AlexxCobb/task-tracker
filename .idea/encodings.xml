@@ -3,6 +3,9 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/Main.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/org/tasktracker/manager/interfaces/Manager.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/org/tasktracker/server/HttpTaskServer.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/org/tasktracker/test/HttpTaskServerTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/org/tasktracker/test/InMemoryHistoryManagerTest.java" charset="UTF-8" />
+    <file url="PROJECT" charset="windows-1251" />
   </component>
 </project>
